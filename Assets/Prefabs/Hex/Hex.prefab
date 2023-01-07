@@ -29339,4 +29339,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightObject: {fileID: 1400364180212184993, guid: f5bf46693bf20f843a6adbd799f1df6b,
     type: 3}
+  selectionManager: {fileID: 11400000, guid: 134011aea7ee16e41a9bcda01cf88128, type: 2}
   hoverFX: {fileID: 1400364179626471131}

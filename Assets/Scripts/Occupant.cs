@@ -12,6 +12,12 @@ public class Occupant : MonoBehaviour
     {
     }
 
+    public virtual void RightAction()
+    {
+        hex.ClearOccupant();
+        Invoke("CleanUp", 1f);
+    }
+
     public void SetHex(Hex whichHex)
     {
         hex = whichHex;
@@ -20,6 +26,11 @@ public class Occupant : MonoBehaviour
     public string GetName()
     {
         return occupantName;
+    }
+
+    void CleanUp()
+    {
+        Destroy(gameObject);
     }
 
 

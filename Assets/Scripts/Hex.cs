@@ -8,7 +8,7 @@ public class Hex : MonoBehaviour
     Occupant occupant;
 
     [SerializeField] GameObject lightObject;
-
+    [SerializeField] SelectionManager selectionManager;
 
     [SerializeField] ParticleSystem hoverFX;
 
@@ -25,10 +25,25 @@ public class Hex : MonoBehaviour
         }
         else
         {
-            SetOccupant(Instantiate(lightObject).GetComponent<Occupant>());
+            if (selectionManager.GetSelection())
+            {
+                Occupant newOccupant = Instantiate(selectionManager.GetSelection()).GetComponent<Occupant>();
+                SetOccupant(newOccupant);
+            } else
+            {
+                Debug.Log("Nothing selected.");
+            }
+
         }
     }
 
+    public void RightAction()
+    {
+        if (occupant)
+        {
+            occupant.RightAction();
+        }
+    }
 
     public bool CheckForOccupant()
     {

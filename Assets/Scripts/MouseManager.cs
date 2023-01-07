@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -39,12 +40,19 @@ public class MouseManager : MonoBehaviour
 
     }
 
+    public void RightClick(InputAction.CallbackContext context)
+    {
+        if (context.performed && activeHex)
+        {
+            activeHex.RightAction();
+        }
+    }
+
     Hex CheckForHex()
     {
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray: ray, hitInfo: out RaycastHit hit, 100f, layersToHit) && hit.collider)
         {
-            Debug.Log(hit.collider.gameObject.name);
             if (hit.collider.gameObject.tag == "Hex")
             {
                 return hit.collider.gameObject.GetComponent<Hex>();

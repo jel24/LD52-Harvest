@@ -11,13 +11,7 @@ public class Wall : Occupant
         hex.ClearOccupant();
         Invoke("CleanUp", 1f);
         deathFX.Play();
-        Debug.Log("Destroy");
-
     }
 
-    void CleanUp()
-    {
-        Destroy(gameObject);
-    }
 
 }
