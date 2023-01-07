@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16e0b94e81fd60044aeab542fb8c019a, type: 3}
+  m_Script: {fileID: 11500000, guid: de35a53f6f4cbb64e871e094db4342b2, type: 3}
   m_Name: SelectionManager
   m_EditorClassIdentifier: 
+  updateSelectionEvent: {fileID: 11400000, guid: 7e0bd513da0365a4cbc454b8992a2afd,
+    type: 2}

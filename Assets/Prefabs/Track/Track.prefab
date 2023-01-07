@@ -390,6 +390,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupantName: Track
+  resourceManager: {fileID: 11400000, guid: 134011aea7ee16e41a9bcda01cf88128, type: 2}
+  hexManager: {fileID: 11400000, guid: 00204a5b20f12e14b97090a8293af81b, type: 2}
+  goldCost: 5
+  workerCost: 0
+  foodCost: 0
+  crystalCost: 0
+  stoneCost: 0
+  lightRequirement: 1
 --- !u!1 &1664979229645038732
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class Occupant : MonoBehaviour
 {
-    [SerializeField] string occupantName;
+    public string occupantName;
+    public string description;
+    public Sprite icon;
+    [SerializeField] protected ResourceManager resourceManager;
+    [SerializeField] protected HexManager hexManager;
+    public int goldCost;
+    public int workerCost;
+    public int foodCost;
+    public int crystalCost;
+    public int stoneCost;
+    public int lightRequirement;
+    public string mineResource;
+    public int mineValue;
+
     protected Hex hex;
 
 
@@ -12,10 +25,31 @@ public class Occupant : MonoBehaviour
     {
     }
 
+    public bool CanAfford()
+    {
+        return resourceManager.GetResource("gold") >= goldCost
+            && resourceManager.GetResource("crystal") >= crystalCost
+            && resourceManager.GetResource("stone") >= stoneCost;
+    }
+
+    public void Buy()
+    {
+        resourceManager.SpendResource("gold", goldCost);
+        resourceManager.SpendResource("stone", stoneCost);
+        resourceManager.SpendResource("crystal", crystalCost);
+        resourceManager.AddResource("workers", workerCost);
+        resourceManager.AddResource("foodUse", foodCost);
+    }
+
     public virtual void RightAction()
     {
         hex.ClearOccupant();
         Invoke("CleanUp", 1f);
+    }
+
+    public virtual void OnDayPass()
+    {
+
     }
 
     public void SetHex(Hex whichHex)
@@ -26,6 +60,21 @@ public class Occupant : MonoBehaviour
     public string GetName()
     {
         return occupantName;
+    }
+
+    public virtual int GetMineValue()
+    {
+        return 0;
+    }
+
+    public virtual string GetMineResource()
+    {
+        return "nothing";
+    }
+
+    public virtual void Mine()
+    {
+        resourceManager.AddResource(GetMineResource(), GetMineValue());
     }
 
     void CleanUp()

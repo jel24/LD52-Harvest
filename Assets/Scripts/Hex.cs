@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Hex : MonoBehaviour
 {
@@ -10,39 +11,96 @@ public class Hex : MonoBehaviour
     [SerializeField] GameObject lightObject;
     [SerializeField] SelectionManager selectionManager;
 
+    [SerializeField] TriggeredEvent cantAffordEvent;
+    [SerializeField] TriggeredEvent tooDarkEvent;
+
     [SerializeField] ParticleSystem hoverFX;
 
-    protected int fertility;
+    [SerializeField] TextMeshPro label;
+
+
     protected int lightness;
-    protected int warmth;
-    
+
+    protected int hexIndexX, hexIndexY;
+
+    bool validHex = false;
+
+    public void SetHexIndex(int x, int y, bool valid)
+    {
+        hexIndexX = x;
+        hexIndexY = y;
+        validHex = valid;
+    }
+
+    public int[] GetHexIndex()
+    {
+        return new int[] { hexIndexX, hexIndexY };
+    }
+
     public void Action()
     {
-        Debug.Log("Clicked");
+        if (validHex)
+        {
+            if (occupant)
+            {
+                occupant.Action();
+            }
+            else
+            {
+                if (selectionManager.GetSelection())
+                {
+                    Occupant newOccupant = selectionManager.GetSelection().GetComponent<Occupant>();
+                    Debug.Log(newOccupant.name + " found.");
+
+                    if (newOccupant.CanAfford())
+                    {
+                        if (lightness >= newOccupant.lightRequirement)
+                        {
+                            newOccupant.Buy();
+                            Occupant newObject = Instantiate(selectionManager.GetSelection()).GetComponent<Occupant>();
+                            SetOccupant(newObject);
+                        } else
+                        {
+                            tooDarkEvent.Trigger();
+                        }
+
+                    }
+                    else
+                    {
+                        Debug.Log(newOccupant.name + " can't be purchased.");
+
+                        cantAffordEvent.Trigger();
+                    }
+
+
+                }
+                else
+                {
+                    Debug.Log("Nothing selected.");
+                }
+
+            }
+        }
+    }
+
+    public void Mine()
+    {
         if (occupant)
         {
-            occupant.Action();
-        }
-        else
-        {
-            if (selectionManager.GetSelection())
-            {
-                Occupant newOccupant = Instantiate(selectionManager.GetSelection()).GetComponent<Occupant>();
-                SetOccupant(newOccupant);
-            } else
-            {
-                Debug.Log("Nothing selected.");
-            }
-
+            occupant.Mine();
         }
     }
 
     public void RightAction()
     {
-        if (occupant)
+        if (validHex)
         {
-            occupant.RightAction();
+            if (occupant)
+            {
+                occupant.RightAction();
+            }
         }
+
     }
 
     public bool CheckForOccupant()
@@ -67,29 +125,29 @@ public class Hex : MonoBehaviour
     {
         occupant = null;
     }
-
-    public void IncreaseFertility(int howMuch)
-    {
-        fertility += howMuch;
-    }
-
     public void IncreaseLightness(int howMuch)
     {
         lightness += howMuch;
     }
 
-    public void IncreaseWarmth(int howMuch)
-    {
-        warmth += howMuch;
-    }
-
     public void PlayHoverFX()
     {
-        hoverFX.Play();
+        if (validHex)
+        {
+            hoverFX.Play();
+            if (occupant)
+            {
+                label.text = occupant.occupantName;
+            }
+        }
     }
 
     public void StopHoverFX()
     {
-        hoverFX.Stop();
+        if (validHex)
+        {
+            hoverFX.Stop();
+            label.text = "";
+        }
     }
 }

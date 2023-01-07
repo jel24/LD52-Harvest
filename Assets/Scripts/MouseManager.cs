@@ -9,26 +9,35 @@ public class MouseManager : MonoBehaviour
 
     [SerializeField] Camera mainCamera;
     [SerializeField] LayerMask layersToHit;
+    [SerializeField] float deadZone;
+
+    public bool modalOpen = false;
 
     Hex activeHex;
     Hex previousHex;
 
-    // Start is called before the first frame update
+    float screenHeight, screenWidth;
+
     void Start()
     {
-        
+        screenHeight = Screen.height;
+        screenWidth = Screen.width;
     }
 
     // Update is called once per frame
     void Update()
     {
-        previousHex = activeHex;
-        activeHex = CheckForHex();
-        if (activeHex != previousHex)
+        if (!modalOpen)
         {
-            if (activeHex) activeHex.PlayHoverFX();
-            if (previousHex) previousHex.StopHoverFX();
+            previousHex = activeHex;
+            activeHex = CheckForHex();
+            if (activeHex != previousHex)
+            {
+                if (activeHex) activeHex.PlayHoverFX();
+                if (previousHex) previousHex.StopHoverFX();
+            }
         }
+
     }
 
     public void Click(InputAction.CallbackContext context)
@@ -50,21 +59,26 @@ public class MouseManager : MonoBehaviour
 
     Hex CheckForHex()
     {
-        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray: ray, hitInfo: out RaycastHit hit, 100f, layersToHit) && hit.collider)
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        if (mousePosition.x < screenWidth - deadZone)
         {
-            if (hit.collider.gameObject.tag == "Hex")
+            Ray ray = mainCamera.ScreenPointToRay(mousePosition);
+            if (Physics.Raycast(ray: ray, hitInfo: out RaycastHit hit, 100f, layersToHit) && hit.collider)
             {
-                return hit.collider.gameObject.GetComponent<Hex>();
+                if (hit.collider.gameObject.tag == "Hex")
+                {
+                    return hit.collider.gameObject.GetComponent<Hex>();
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {
                 return null;
             }
         }
-        else
-        {
-            return null;
-        }
+        return null;
     }
 }

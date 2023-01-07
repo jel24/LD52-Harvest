@@ -45,7 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74584ced510090047832200d3e7863d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  occupantName: Wall
+  occupantName: Gold Vein
+  description: 
+  icon: {fileID: 0}
+  resourceManager: {fileID: 11400000, guid: 134011aea7ee16e41a9bcda01cf88128, type: 2}
+  hexManager: {fileID: 11400000, guid: 00204a5b20f12e14b97090a8293af81b, type: 2}
+  goldCost: 0
+  workerCost: 0
+  foodCost: 0
+  crystalCost: 0
+  stoneCost: 0
+  lightRequirement: 0
   deathFX: {fileID: 3704585186231132953}
 --- !u!1 &3458993513952182808
 GameObject:
