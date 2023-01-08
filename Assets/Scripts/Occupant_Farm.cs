@@ -6,12 +6,15 @@ using UnityEngine;
 public class Occupant_Farm : Occupant
 {
 
+    [SerializeField] int farmValue = 0;
+    [SerializeField] string farmResource = "nothing";
+
     void Start() {
         hex.AddYield();
     }
 
     public override void OnMine()
     {
-        Mine();
+        resourceManager.AddResource(farmResource, farmValue);
     }
 }

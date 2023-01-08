@@ -868,10 +868,12 @@ MonoBehaviour:
   stoneCost: 0
   lightRequirement: 1
   mineResource: crystal
-  mineValue: 2
+  mineValue: 0
   frequency: 1
   showAdjacentYield: 0
   hex: {fileID: 0}
+  farmValue: 2
+  farmResource: crystal
 --- !u!114 &2923498311263948602
 MonoBehaviour:
   m_ObjectHideFlags: 0

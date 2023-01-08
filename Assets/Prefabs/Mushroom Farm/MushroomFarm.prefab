@@ -1451,11 +1451,13 @@ MonoBehaviour:
   crystalCost: 0
   stoneCost: 0
   lightRequirement: 1
-  mineResource: food
-  mineValue: 6
+  mineResource: nothing
+  mineValue: 0
   frequency: 1
   showAdjacentYield: 0
   hex: {fileID: 0}
+  farmValue: 6
+  farmResource: food
 --- !u!114 &2923498311263948602
 MonoBehaviour:
   m_ObjectHideFlags: 0

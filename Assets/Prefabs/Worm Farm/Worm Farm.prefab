@@ -783,11 +783,13 @@ MonoBehaviour:
   crystalCost: 0
   stoneCost: 25
   lightRequirement: 1
-  mineResource: food
-  mineValue: 10
+  mineResource: nothing
+  mineValue: 0
   frequency: 1
   showAdjacentYield: 0
   hex: {fileID: 0}
+  farmValue: 10
+  farmResource: food
 --- !u!1 &1801071400783446784
 GameObject:
   m_ObjectHideFlags: 0
