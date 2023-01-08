@@ -10,7 +10,6 @@ public class SelectionUIManager : MonoBehaviour
     public void ClickButton(GameObject prefab)
     {
         selectionManager.SetSelection(prefab);
-        Debug.Log("Setting selection to " + prefab.name);
     }
 
 

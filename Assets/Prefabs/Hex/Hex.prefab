@@ -29344,6 +29344,8 @@ MonoBehaviour:
   resourceManager: {fileID: 11400000, guid: 134011aea7ee16e41a9bcda01cf88128, type: 2}
   cantAffordEvent: {fileID: 11400000, guid: 66a6e772aa861364eab1262d8384c092, type: 2}
   tooDarkEvent: {fileID: 11400000, guid: eb54243531ff87543ba7d31da09d136c, type: 2}
+  buildingPlacedEvent: {fileID: 11400000, guid: 16f87a7ab64ef2f43833d49a517ed794,
+    type: 2}
   hoverFX: {fileID: 1400364179626471131}
   label: {fileID: 3208927446877218868}
 --- !u!1 &7322985150976253414

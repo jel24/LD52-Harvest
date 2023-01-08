@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,16 +34,23 @@ public class MouseManager : MonoBehaviour
         {
             previousHex = activeHex;
             activeHex = CheckForHex();
+            if (activeHex)
+            {
+                activeHex.PlayHoverFX();
+
+            }
             if (activeHex != previousHex)
             {
                 if (activeHex)
                 {
-                    activeHex.PlayHoverFX();
                     if (yieldHexes != null)
                     {
                         for (int i = 0; i < 6; i++)
                         {
-                            yieldHexes[i].StopHoverFX();
+                            if (yieldHexes[i])
+                            {
+                                yieldHexes[i].StopHoverFX();
+                            }
                         }
                     }
                     if (selectionManager.GetSelection())

@@ -79,6 +79,12 @@ public class HexManager : ScriptableObject
     {
         Hex[] hexArray = new Hex[6];
 
+        if (x >= boardSizeX - 2 || x < 2 || y <= 3 || y >= boardSizeY - 3)
+        {
+            return hexArray;
+        }
+
+
         if (y % 2 == 0)
         {
             hexArray[0] = hexes[x, y - 1];

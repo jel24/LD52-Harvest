@@ -1441,7 +1441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925c96e66b523d840940aec33a91251c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  occupantName: Farm
+  occupantName: Mush. Farm
   description: Provides 6 food every day.
   icon: {fileID: 21300000, guid: 6cc2536375e8c984f94fbed6cd6c5610, type: 3}
   resourceManager: {fileID: 11400000, guid: 134011aea7ee16e41a9bcda01cf88128, type: 2}

@@ -53,7 +53,6 @@ MonoBehaviour:
   hexManager: {fileID: 11400000, guid: 00204a5b20f12e14b97090a8293af81b, type: 2}
   goldCost: 0
   workerCost: 0
-  foodCost: 0
   crystalCost: 0
   stoneCost: 0
   lightRequirement: 0
@@ -61,8 +60,10 @@ MonoBehaviour:
   mineValue: 2
   frequency: 1
   showAdjacentYield: 0
+  hex: {fileID: 0}
   deathFX: {fileID: 3704585186231132953}
   destroyCost: 15
+  destroyWallEvent: {fileID: 11400000, guid: 6a9f02281df947446970589b91ce493a, type: 2}
 --- !u!114 &2977359289789827471
 MonoBehaviour:
   m_ObjectHideFlags: 0

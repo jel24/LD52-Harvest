@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -39,20 +38,29 @@ public class UpkeepManager : MonoBehaviour
 
         int shortfall = (food - 2 * workers);
 
+
         if (shortfall < 0)
         {
             abandonFood.Trigger();
             resourceManager.SpendResource("food", 9999);
 
+            Occupant_Mine[] mines = FindObjectsOfType<Occupant_Mine>();
+            Queue<Occupant_Mine> minesList = new Queue<Occupant_Mine>();
+
+
+            for (int i = 0; i < mines.Length; i++)
+            {
+                minesList.Enqueue(mines[i]);
+            }
+
 
             while (shortfall < 0)
             {
-                Occupant_Mine mineToDestroy = FindObjectOfType<Occupant_Mine>();
+                Occupant_Mine mineToDestroy = minesList.Dequeue();
                 mineToDestroy.hex.ClearOccupant();
                 mineToDestroy.CleanUp();
                 resourceManager.SpendResource("workers", 2);
-                resourceManager.AddResource("foodIncome", 4);
-                shortfall += 2;
+                shortfall += 4;
             }
 
         } else
@@ -67,9 +75,18 @@ public class UpkeepManager : MonoBehaviour
 
     public void CheckShelter()
     {
+        Occupant_Mine[] mines = FindObjectsOfType<Occupant_Mine>();
+        Queue<Occupant_Mine> minesList = new Queue<Occupant_Mine>();
+
+        for (int i = 0; i < mines.Length; i++)
+        {
+            minesList.Enqueue(mines[i]);
+        }
+
+
         while (resourceManager.GetResource("shelter") < resourceManager.GetResource("workers"))
         {
-            Occupant_Mine mineToDestroy = FindObjectOfType<Occupant_Mine>();
+            Occupant_Mine mineToDestroy = minesList.Dequeue();
             mineToDestroy.hex.ClearOccupant();
             mineToDestroy.CleanUp();
             resourceManager.SpendResource("workers", 2);

@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f3f71618bda904d9330d6e9237ff45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  occupantName: Advanced Mining Zone
+  occupantName: Adv. Mine
   description: Harvests double resources from adjacent spaces. Increases lightness
     by 1 hex.
   icon: {fileID: 21300000, guid: 613bd72dc6467ed47b5ccc379530c1c0, type: 3}

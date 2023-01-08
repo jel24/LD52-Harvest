@@ -14,6 +14,7 @@ public class Hex : MonoBehaviour
 
     [SerializeField] TriggeredEvent cantAffordEvent;
     [SerializeField] TriggeredEvent tooDarkEvent;
+    [SerializeField] TriggeredEvent buildingPlacedEvent;
 
     [SerializeField] ParticleSystem hoverFX;
 
@@ -51,13 +52,12 @@ public class Hex : MonoBehaviour
                 if (selectionManager.GetSelection())
                 {
                     Occupant newOccupant = selectionManager.GetSelection().GetComponent<Occupant>();
-                    Debug.Log(newOccupant.name + " found.");
-
                     if (newOccupant.CanAfford())
                     {
                         if (lightness >= newOccupant.lightRequirement)
                         {
                             newOccupant.Buy();
+                            buildingPlacedEvent.Trigger();
                             Occupant newObject = Instantiate(selectionManager.GetSelection()).GetComponent<Occupant>();
                             SetOccupant(newObject);
                         } else
@@ -68,16 +68,10 @@ public class Hex : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log(newOccupant.name + " can't be purchased.");
-
                         cantAffordEvent.Trigger();
                     }
 
 
-                }
-                else
-                {
-                    Debug.Log("Nothing selected.");
                 }
 
             }
