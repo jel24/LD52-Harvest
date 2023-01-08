@@ -10,6 +10,8 @@ public class MouseManager : MonoBehaviour
     [SerializeField] Camera mainCamera;
     [SerializeField] LayerMask layersToHit;
     [SerializeField] float deadZone;
+    [SerializeField] SelectionManager selectionManager;
+    [SerializeField] HexManager hexManager;
 
     public bool modalOpen = false;
 
@@ -24,6 +26,8 @@ public class MouseManager : MonoBehaviour
         screenWidth = Screen.width;
     }
 
+    Hex[] yieldHexes;
+
     // Update is called once per frame
     void Update()
     {
@@ -33,7 +37,29 @@ public class MouseManager : MonoBehaviour
             activeHex = CheckForHex();
             if (activeHex != previousHex)
             {
-                if (activeHex) activeHex.PlayHoverFX();
+                if (activeHex)
+                {
+                    activeHex.PlayHoverFX();
+                    if (yieldHexes != null)
+                    {
+                        for (int i = 0; i < 6; i++)
+                        {
+                            yieldHexes[i].StopHoverFX();
+                        }
+                    }
+                    if (selectionManager.GetSelection())
+                    {
+                        if (selectionManager.GetSelection().GetComponent<Occupant>().showAdjacentYield)
+                        {
+                            int[] index = activeHex.GetHexIndex();
+                            yieldHexes = hexManager.GetAdjacentHexes(index[0], index[1]);
+                            for (int i = 0; i < 6; i++)
+                            {
+                                yieldHexes[i].ShowYield();
+                            }
+                        }
+                    }
+                }
                 if (previousHex) previousHex.StopHoverFX();
             }
         }
@@ -53,7 +79,7 @@ public class MouseManager : MonoBehaviour
     {
         if (context.performed && activeHex)
         {
-            activeHex.RightAction();
+            selectionManager.ClearSelection();
         }
     }
 

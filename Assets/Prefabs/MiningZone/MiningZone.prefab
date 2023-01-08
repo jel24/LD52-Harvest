@@ -85,7 +85,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 386999914767764237}
         m_TargetAssemblyTypeName: Occupant_Mine, Assembly-CSharp
-        m_MethodName: OnDayPass
+        m_MethodName: OnMine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -95,7 +95,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  whichEvent: {fileID: 11400000, guid: 6c63d1cae30c2e747b1ffa95318ca23d, type: 2}
+  whichEvent: {fileID: 11400000, guid: 714da36ff1d980e46bd8176067a3ca71, type: 2}
 --- !u!114 &386999914767764237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,14 +114,16 @@ MonoBehaviour:
   icon: {fileID: 0}
   resourceManager: {fileID: 11400000, guid: 134011aea7ee16e41a9bcda01cf88128, type: 2}
   hexManager: {fileID: 11400000, guid: 00204a5b20f12e14b97090a8293af81b, type: 2}
-  goldCost: 0
+  goldCost: 50
   workerCost: 2
   foodCost: 2
   crystalCost: 0
   stoneCost: 0
   lightRequirement: 1
-  mineResource: 
+  mineResource: nothing
   mineValue: 0
+  frequency: 1
+  showAdjacentYield: 1
   deathFX: {fileID: 0}
   lightIncrease: 1
 --- !u!1 &1480286309159107135

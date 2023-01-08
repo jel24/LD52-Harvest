@@ -27,6 +27,7 @@ public class ResourceManager : ScriptableObject
         resources.Add("shelter", 0);
         resources.Add("workers", 0);
         resources.Add("crystal", startingCrystal);
+        resources.Add("crystalIncome", 0);
         resources.Add("food", startingFood);
         resources.Add("foodIncome", 0);
         resources.Add("foodUse", 0);
@@ -45,6 +46,19 @@ public class ResourceManager : ScriptableObject
     public void AddResource(string resource, int howMuch)
     {
         resources[resource] += howMuch;
+        updateResourceUIEvent.Trigger();
+    }
+
+    public void AddYield(string resource, int howMuch)
+    {
+        switch (resource)
+        {
+            case "gold": resources["goldIncome"] += howMuch; break;
+            case "stone": resources["stoneIncome"] += howMuch; break;
+            case "crystal": resources["crystalIncome"] += howMuch; break;
+            case "food": resources["foodIncome"] += howMuch; break;
+
+        }
         updateResourceUIEvent.Trigger();
     }
 

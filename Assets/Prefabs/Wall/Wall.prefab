@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1400364180212185007}
   - component: {fileID: 1057277202348252011}
+  - component: {fileID: 2977359289789827471}
   m_Layer: 7
   m_Name: Wall
   m_TagString: Occupant
@@ -45,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74584ced510090047832200d3e7863d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  occupantName: Stone Wall
+  occupantName: Stone Wall (Destroy for 15g)
   description: 
   icon: {fileID: 0}
   resourceManager: {fileID: 11400000, guid: 134011aea7ee16e41a9bcda01cf88128, type: 2}
@@ -56,7 +57,40 @@ MonoBehaviour:
   crystalCost: 0
   stoneCost: 0
   lightRequirement: 0
+  mineResource: stone
+  mineValue: 2
+  frequency: 1
+  showAdjacentYield: 0
   deathFX: {fileID: 3704585186231132953}
+  destroyCost: 15
+--- !u!114 &2977359289789827471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400364180212184993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04554d80c35380438a8aa4217433668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatHappens:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1057277202348252011}
+        m_TargetAssemblyTypeName: Occupant, Assembly-CSharp
+        m_MethodName: Increment
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  whichEvent: {fileID: 11400000, guid: cae3de6cd98d5e44bafbbbe20a2818f0, type: 2}
 --- !u!1 &3458993513952182808
 GameObject:
   m_ObjectHideFlags: 0

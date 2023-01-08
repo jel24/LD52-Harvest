@@ -17,9 +17,11 @@ public class Occupant : MonoBehaviour
     public int lightRequirement;
     public string mineResource;
     public int mineValue;
+    public int frequency = 2;
+    public bool showAdjacentYield = false;
 
     protected Hex hex;
-
+    protected int counter = 0;
 
     public virtual void Action()
     {
@@ -47,7 +49,12 @@ public class Occupant : MonoBehaviour
         Invoke("CleanUp", 1f);
     }
 
-    public virtual void OnDayPass()
+    public virtual void Increment()
+    {
+        counter++;
+    }
+
+    public virtual void OnMine()
     {
 
     }
@@ -64,17 +71,20 @@ public class Occupant : MonoBehaviour
 
     public virtual int GetMineValue()
     {
-        return 0;
+        return mineValue;
     }
 
     public virtual string GetMineResource()
     {
-        return "nothing";
+        return mineResource;
     }
 
     public virtual void Mine()
     {
-        resourceManager.AddResource(GetMineResource(), GetMineValue());
+        if (counter % frequency == 0)
+        {
+            resourceManager.AddResource(GetMineResource(), GetMineValue());
+        }
     }
 
     void CleanUp()

@@ -35,7 +35,7 @@ public class HexManager : ScriptableObject
                     offset = spaceBetweenHexesX / 2f;
                 }
 
-                if (i >= boardSizeX - 1 || i < 1 || j <= 1 || j >= boardSizeY - 3)
+                if (i >= boardSizeX - 2 || i < 2 || j <= 1 || j >= boardSizeY - 3)
                 {
                     isValid = false;
                 }

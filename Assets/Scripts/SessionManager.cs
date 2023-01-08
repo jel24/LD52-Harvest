@@ -9,8 +9,10 @@ public class SessionManager : MonoBehaviour
     [SerializeField] ResourceManager resourceManager;
     [SerializeField] SelectionManager selectionManager;
     [SerializeField] HexManager hexManager;
-
-    [SerializeField] TriggeredEvent dayPassEvent;
+    [SerializeField] NewDawnManager newDawnManager;
+    [SerializeField] TriggeredEvent mineEvent; 
+    [SerializeField] TriggeredEvent incrementEvent;
+    [SerializeField] TriggeredEvent newDawnEvent;
 
 
     void Start()
@@ -18,11 +20,16 @@ public class SessionManager : MonoBehaviour
         selectionManager.ClearSelection();
         hexManager.NewGame();
         resourceManager.Init();
+        newDawnManager.Init();
     }
 
     public void EndDay()
     {
+       
         resourceManager.SpendResource("days", 1);
+        incrementEvent.Trigger();
+        mineEvent.Trigger();
+
         if (resourceManager.GetResource("days") == 0)
         {
             if (CheckVictory())
@@ -39,7 +46,8 @@ public class SessionManager : MonoBehaviour
             SceneManager.LoadSceneAsync("Victory");
 
         }
-        dayPassEvent.Trigger();
+
+        newDawnEvent.Trigger();
 
     }
 

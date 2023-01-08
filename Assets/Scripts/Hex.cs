@@ -10,6 +10,7 @@ public class Hex : MonoBehaviour
 
     [SerializeField] GameObject lightObject;
     [SerializeField] SelectionManager selectionManager;
+    [SerializeField] ResourceManager resourceManager;
 
     [SerializeField] TriggeredEvent cantAffordEvent;
     [SerializeField] TriggeredEvent tooDarkEvent;
@@ -139,6 +140,27 @@ public class Hex : MonoBehaviour
             {
                 label.text = occupant.occupantName;
             }
+        }
+    }
+
+    public void ShowYield()
+    {
+        if (validHex)
+        {
+            if (occupant)
+            {
+                if (occupant.GetMineResource() != "nothing") {
+                    label.text = occupant.GetMineValue() + " " + occupant.GetMineResource() + "/day";
+                }
+            }
+        }
+    }
+
+    public void AddYield()
+    {
+        if (occupant)
+        {
+            resourceManager.AddYield(occupant.GetMineResource(), occupant.GetMineValue());
         }
     }
 
