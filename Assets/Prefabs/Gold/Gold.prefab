@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1400364180212185007}
   - component: {fileID: 5677607684443526353}
-  - component: {fileID: 2897516319699832816}
   m_Layer: 7
   m_Name: Gold
   m_TagString: Occupant
@@ -53,41 +52,14 @@ MonoBehaviour:
   hexManager: {fileID: 11400000, guid: 00204a5b20f12e14b97090a8293af81b, type: 2}
   goldCost: 0
   workerCost: 0
-  foodCost: 0
   crystalCost: 0
   stoneCost: 0
   lightRequirement: 0
   mineResource: gold
   mineValue: 25
   frequency: 1
---- !u!114 &2897516319699832816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400364180212184993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04554d80c35380438a8aa4217433668, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatHappens:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5677607684443526353}
-        m_TargetAssemblyTypeName: Occupant, Assembly-CSharp
-        m_MethodName: Increment
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  whichEvent: {fileID: 11400000, guid: cae3de6cd98d5e44bafbbbe20a2818f0, type: 2}
+  showAdjacentYield: 0
+  hex: {fileID: 0}
 --- !u!1 &1847622830309151889
 GameObject:
   m_ObjectHideFlags: 0

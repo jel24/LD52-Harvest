@@ -11,7 +11,6 @@ public class Occupant : MonoBehaviour
     [SerializeField] protected HexManager hexManager;
     public int goldCost;
     public int workerCost;
-    public int foodCost;
     public int crystalCost;
     public int stoneCost;
     public int lightRequirement;
@@ -20,7 +19,7 @@ public class Occupant : MonoBehaviour
     public int frequency = 2;
     public bool showAdjacentYield = false;
 
-    protected Hex hex;
+    public Hex hex;
     protected int counter = 0;
 
     public virtual void Action()
@@ -40,7 +39,7 @@ public class Occupant : MonoBehaviour
         resourceManager.SpendResource("stone", stoneCost);
         resourceManager.SpendResource("crystal", crystalCost);
         resourceManager.AddResource("workers", workerCost);
-        resourceManager.AddResource("foodUse", foodCost);
+        resourceManager.AddResource("foodIncome", -2 * workerCost);
     }
 
     public virtual void RightAction()
@@ -87,7 +86,7 @@ public class Occupant : MonoBehaviour
         }
     }
 
-    void CleanUp()
+    public void CleanUp()
     {
         Destroy(gameObject);
     }

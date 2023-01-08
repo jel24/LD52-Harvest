@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateResourceUIEvent: {fileID: 11400000, guid: 59527eab02d0531478ec8f1cfe63b4e9,
     type: 2}
-  startingGold: 200
-  startingFood: 25
+  startingGold: 250
+  startingFood: 35
   startingDays: 15
-  startingCrystal: 5
+  startingCrystal: 0
+  startingShelter: 8
+  startingStone: 50

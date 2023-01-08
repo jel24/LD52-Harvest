@@ -35,7 +35,7 @@ public class HexManager : ScriptableObject
                     offset = spaceBetweenHexesX / 2f;
                 }
 
-                if (i >= boardSizeX - 2 || i < 2 || j <= 1 || j >= boardSizeY - 3)
+                if (i >= boardSizeX - 2 || i < 2 || j <= 3 || j >= boardSizeY - 3)
                 {
                     isValid = false;
                 }
@@ -48,9 +48,9 @@ public class HexManager : ScriptableObject
 
 
 
-                if (i > 4 && i < 8 && j < 8)
+                if (i > 4 && i < 8 && j < 10)
                 {
-                    if (j == 6 && i == 6)
+                    if (j == 7 && i == 6)
                     {
                         newHex.SetOccupant(Instantiate(lanternObject).GetComponent<Occupant>());
                     }

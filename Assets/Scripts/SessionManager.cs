@@ -13,7 +13,7 @@ public class SessionManager : MonoBehaviour
     [SerializeField] TriggeredEvent mineEvent; 
     [SerializeField] TriggeredEvent incrementEvent;
     [SerializeField] TriggeredEvent newDawnEvent;
-
+    [SerializeField] UpkeepManager upkeepManager;
 
     void Start()
     {
@@ -29,6 +29,7 @@ public class SessionManager : MonoBehaviour
         resourceManager.SpendResource("days", 1);
         incrementEvent.Trigger();
         mineEvent.Trigger();
+
 
         if (resourceManager.GetResource("days") == 0)
         {
@@ -48,7 +49,6 @@ public class SessionManager : MonoBehaviour
         }
 
         newDawnEvent.Trigger();
-
     }
 
     bool CheckVictory()

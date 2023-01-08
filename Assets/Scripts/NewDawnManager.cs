@@ -39,10 +39,23 @@ public class NewDawnManager : ScriptableObject
     {
         if (which == 1)
         {
-            return peopleOriginals[which].GetComponent<Occupant>().occupantName;
+            return peopleOriginals[timesTaken[which]].GetComponent<Occupant>().description;
         } else if (which == 2)
         {
-            return engineeringOriginals[which].GetComponent<Occupant>().occupantName;
+            return engineeringOriginals[timesTaken[which]].GetComponent<Occupant>().description;
+        }
+        return "";
+    }
+
+    public string GetTitle(int which)
+    {
+        if (which == 1)
+        {
+            return peopleOriginals[timesTaken[which]].GetComponent<Occupant>().occupantName;
+        }
+        else if (which == 2)
+        {
+            return engineeringOriginals[timesTaken[which]].GetComponent<Occupant>().occupantName;
         }
         return "";
     }
@@ -51,12 +64,14 @@ public class NewDawnManager : ScriptableObject
     {
         if (which == 1)
         {
-            return peopleOriginals[which].GetComponent<Occupant>().icon;
+            return peopleOriginals[timesTaken[which]].GetComponent<Occupant>().icon;
         }
         else if (which == 2)
         {
-            return engineeringOriginals[which].GetComponent<Occupant>().icon;
+            return engineeringOriginals[timesTaken[which]].GetComponent<Occupant>().icon;
         }
         return null;
     }
+
+
 }

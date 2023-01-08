@@ -55,7 +55,10 @@ public class MouseManager : MonoBehaviour
                             yieldHexes = hexManager.GetAdjacentHexes(index[0], index[1]);
                             for (int i = 0; i < 6; i++)
                             {
-                                yieldHexes[i].ShowYield();
+                                if (yieldHexes[i])
+                                {
+                                    yieldHexes[i].ShowYield();
+                                }
                             }
                         }
                     }

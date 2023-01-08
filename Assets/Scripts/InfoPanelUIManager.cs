@@ -29,8 +29,7 @@ public class InfoPanelUIManager : MonoBehaviour
             workerCost.text = selected.workerCost.ToString();
             stoneCost.text = selected.stoneCost.ToString();
             crystalCost.text = selected.crystalCost.ToString();
-
-            //image.sprite = selected.icon;
+            image.sprite = selected.icon;
             panel.SetActive(true);
         }
         else

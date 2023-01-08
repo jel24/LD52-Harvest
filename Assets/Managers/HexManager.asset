@@ -21,8 +21,8 @@ MonoBehaviour:
   probablities:
   - 0.95
   - 0.2
-  - 0.05
   - 0.02
+  - 0.005
   startingOccupants:
   - {fileID: 1400364180212184993, guid: a893ded6c4088dc429402abcec0e5c2b, type: 3}
   - {fileID: 0}

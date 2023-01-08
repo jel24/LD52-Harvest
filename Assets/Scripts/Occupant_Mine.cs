@@ -6,7 +6,7 @@ using UnityEngine;
 public class Occupant_Mine : Occupant
 {
     [SerializeField] ParticleSystem deathFX;
-    [SerializeField] int lightIncrease;
+    [SerializeField] protected int lightIncrease;
 
     void Start()
     {
@@ -17,7 +17,6 @@ public class Occupant_Mine : Occupant
             hexes[i].IncreaseLightness(lightIncrease);
             hexes[i].AddYield();
         }
-
     }
 
     public override void OnMine()

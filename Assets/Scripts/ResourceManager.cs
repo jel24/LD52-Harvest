@@ -18,20 +18,22 @@ public class ResourceManager : ScriptableObject
     [SerializeField] int startingFood;
     [SerializeField] int startingDays;
     [SerializeField] int startingCrystal;
+    [SerializeField] int startingShelter;
+    [SerializeField] int startingStone;
 
     public void Init()
     {
         resources = new Dictionary<string, int>();
         resources.Add("gold", startingGold);
         resources.Add("goldIncome", 0);
-        resources.Add("shelter", 0);
+        resources.Add("shelter", startingShelter);
         resources.Add("workers", 0);
         resources.Add("crystal", startingCrystal);
         resources.Add("crystalIncome", 0);
         resources.Add("food", startingFood);
         resources.Add("foodIncome", 0);
         resources.Add("foodUse", 0);
-        resources.Add("stone", 0);
+        resources.Add("stone", startingStone);
         resources.Add("stoneIncome", 0);
         resources.Add("days", startingDays);
         resources.Add("nothing", 0);

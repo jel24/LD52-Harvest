@@ -46,20 +46,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupantName: Lantern
-  description: 
-  icon: {fileID: 0}
+  description: Creates light with radius 2.
+  icon: {fileID: 21300000, guid: 1545645b6c6d41048bc3a2f5f60aa016, type: 3}
   resourceManager: {fileID: 11400000, guid: 134011aea7ee16e41a9bcda01cf88128, type: 2}
   hexManager: {fileID: 11400000, guid: 00204a5b20f12e14b97090a8293af81b, type: 2}
-  goldCost: 10
+  goldCost: 1
   workerCost: 0
-  foodCost: 0
-  crystalCost: 1
-  stoneCost: 0
+  crystalCost: 0
+  stoneCost: 5
   lightRequirement: 1
   mineResource: nothing
   mineValue: 0
   frequency: 1
   showAdjacentYield: 0
+  hex: {fileID: 0}
   deathFX: {fileID: 0}
   lightIncrease: 2
 --- !u!1 &2788688204041463532
